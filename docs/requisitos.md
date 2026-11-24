@@ -81,9 +81,3 @@ Critério de priorização: entra como **I** tudo o que é necessário para fech
 | T11 Filtro por canal | RF13 |
 | T12 Transição inválida | RF15 |
 | T13 Auditoria | RF22, RF23, RNF06 |
-
-## Decisões em aberto (resolver na modelagem, 25–29/11)
-
-- Quando baixar o estoque: na criação do pedido (reserva) ou na aprovação do pagamento?
-- Regra determinística do pagamento mock (campo no request ou valor-gatilho?).
-- Quais perfis podem cancelar e até qual status.
