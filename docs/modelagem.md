@@ -83,6 +83,7 @@ Duas FKs ficam fora do desenho para não poluir a imagem, mas existem no banco: 
 | **Consentimento com finalidade, versão e revogação** | É a evidência exigida pela LGPD: *quem* aceitou, *o quê*, *qual versão* e *quando*, com revogação sem apagar o histórico. |
 | **Minimização LGPD em `usuarios`** | Coleta só nome, e-mail e senha (hash). CPF, telefone e data de nascimento ficam de fora, porque o MVP não precisa deles. |
 | **Auditoria com `dados_antes` e `dados_depois` em JSONB** | Um formato genérico serve para qualquer entidade. Dados pessoais são mascarados antes da gravação. |
+| **Exclusão lógica de produtos** (`produtos.ativo = false`) | O produto pode estar em pedidos antigos (`itens_pedido.produto_id`). Apagar a linha quebraria a FK ou o histórico. Inativo, ele some dos cardápios e da criação de pedidos, mas continua consultável nos pedidos já feitos. O mesmo vale para unidades (`unidades.ativa`) e usuários (`usuarios.ativo`). |
 | **Datas em `TIMESTAMPTZ`** | A rede está em várias cidades e o horário fica sempre em UTC. |
 
 ---

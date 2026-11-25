@@ -149,7 +149,7 @@ Versão 0.2 — 24/11/2026
 | RN08 | O `POST /pagamentos` exige `Idempotency-Key`. Uma chave com resultado final (`APROVADO` ou `RECUSADO`) não gera nova cobrança. |
 | RN09 | O mock decide de forma determinística pelo `tokenPagamento`: `tok_aprovado` → APROVADO, `tok_recusado` → RECUSADO, `tok_timeout` → falha do gateway. Isso imita os tokens de teste dos gateways reais. |
 | RN10 | O valor cobrado é sempre o total do pedido; nenhum valor enviado pelo cliente é usado. |
-| RN11 | Máquina de estados e quem pode executar cada transição (qualquer outra transição → `409 TRANSICAO_INVALIDA`): |
+| RN11 | Máquina de estados e quem pode executar cada transição. Se a transição **não existe** na tabela abaixo (ex.: `PRONTO → PAGO`), a resposta é `409 TRANSICAO_INVALIDA`. Se ela existe, mas **o perfil não pode executá-la** (ex.: `ATENDENTE` tentando `PAGO → EM_PREPARO`), a resposta é `403 ACESSO_NEGADO`. |
 
 | De | Para | Quem |
 |---|---|---|
